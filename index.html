@@ -2,23 +2,27 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Script2Video</title>
+  <title>Script to Video</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <h1>Script to Video</h1>
 
-  <h1>Script2Video</h1>
-  <p>대본을 입력하면 영상이 만들어집니다.</p>
+  <textarea
+    id="scriptInput"
+    placeholder="영상 대본을 입력하세요"
+    rows="6"
+    cols="50"
+  ></textarea>
 
-  <!-- 대본 입력 -->
-  <textarea id="script" rows="6" placeholder="대본을 입력하세요"></textarea>
+  <br /><br />
 
-  <!-- 버튼 -->
-  <button id="generateBtn">영상 생성하기</button>
+  <button onclick="generateVideo()">영상 생성하기</button>
+
+  <pre id="result">결과가 여기에 표시됩니다</pre>
 
   <script src="script.js"></script>
 </body>
-
-<div id="result"></div>
-
 </html>
+
+
