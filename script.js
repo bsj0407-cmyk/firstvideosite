@@ -1,8 +1,11 @@
-const btn = document.getElementById("generateBtn");
-
-btn.addEventListener("click", () => {
-  const scriptText = document.getElementById("script").value;
-
-  console.log("보낼 대본:", scriptText);
-  alert("대본이 준비되었습니다!");
+btn.addEventListener("click", async () => {
+  try {
+    const res = await fetch(
+      "https://script2video-api.onrender.com/health"
+    );
+    const text = await res.text();
+    alert("서버 응답: " + text);
+  } catch (e) {
+    alert("서버 연결 실패");
+  }
 });
