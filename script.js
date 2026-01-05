@@ -14,7 +14,7 @@ btn.addEventListener("click", async () => {
   try {
     // 백엔드 서버로 POST 요청
     const res = await fetch(
-      "https://script2video-api.onrender.com/script",
+      "https://script2video-backend-a64d.onrender.com/script",
       {
         method: "POST",
         headers: {
