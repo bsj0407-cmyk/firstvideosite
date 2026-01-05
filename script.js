@@ -1,5 +1,7 @@
 const btn = document.getElementById("generateBtn");
 
 btn.addEventListener("click", () => {
-  alert("버튼 클릭됨!");
+  const scriptText = document.getElementById("script").value;
+
+  alert(scriptText);
 });
