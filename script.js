@@ -1,7 +1,7 @@
 btn.addEventListener("click", async () => {
   try {
     const res = await fetch(
-      "https://script2video-backend-a64d.onrender.com/"
+      "https://script2video-api.onrender.com/health"
     );
     const text = await res.text();
     alert("서버 응답: " + text);
