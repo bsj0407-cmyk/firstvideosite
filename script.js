@@ -1,18 +1,15 @@
-// 버튼 가져오기
 const btn = document.getElementById("generateBtn");
 
 btn.addEventListener("click", async () => {
-  // textarea에서 대본 가져오기
   const scriptText = document.getElementById("script").value;
 
-  // 대본이 비어 있으면 중단
+  // 대본 비어있으면 중단
   if (!scriptText.trim()) {
     alert("대본을 입력해주세요.");
     return;
   }
 
   try {
-    // 백엔드 서버로 POST 요청
     const res = await fetch(
       "https://script2video-backend-a64d.onrender.com/script",
       {
@@ -26,10 +23,12 @@ btn.addEventListener("click", async () => {
       }
     );
 
-    // 서버 응답 받기
+    if (!res.ok) {
+      throw new Error("서버 응답 오류");
+    }
+
     const data = await res.json();
 
-    // 결과 확인
     alert(
       `${data.message}\n글자 수: ${data.length}`
     );
