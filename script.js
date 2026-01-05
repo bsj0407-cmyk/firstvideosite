@@ -39,3 +39,42 @@ btn.addEventListener("click", async () => {
   }
 });
 
+
+// 수정(핵심)
+const btn = document.getElementById("generateBtn");
+const resultDiv = document.getElementById("result");
+
+btn.addEventListener("click", async () => {
+  const scriptText = document.getElementById("script").value;
+  resultDiv.innerHTML = "이미지 생성 중...";
+
+  try {
+    const res = await fetch(
+      "https://script2video-backend-a64d.onrender.com/generate-images",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ script: scriptText })
+      }
+    );
+
+    const data = await res.json();
+
+    resultDiv.innerHTML = "";
+
+    data.images.forEach(item => {
+      const img = document.createElement("img");
+      img.src = item.imageUrl;
+      img.style.width = "300px";
+      img.style.margin = "10px";
+      resultDiv.appendChild(img);
+    });
+
+  } catch (err) {
+    console.error(err);
+    resultDiv.innerHTML = "이미지 생성 실패";
+  }
+});
+
