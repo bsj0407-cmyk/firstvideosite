@@ -1,11 +1,26 @@
 btn.addEventListener("click", async () => {
+  const scriptText = document.getElementById("script").value;
+
   try {
     const res = await fetch(
-      "https://script2video-backend-a64d.onrender.com/health"
+      "https://script2video-api.onrender.com/script",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          script: scriptText
+        })
+      }
     );
-    const text = await res.text();
-    alert("서버 응답: " + text);
-  } catch (e) {
-    alert("서버 연결 실패");
+
+    const data = await res.json();
+    alert(
+      `${data.message}\n글자 수: ${data.length}`
+    );
+  } catch (err) {
+    alert("서버 전송 실패");
+    console.error(err);
   }
 });
